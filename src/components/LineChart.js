@@ -3,18 +3,20 @@ import { Line } from "react-chartjs-2";
 
 const options = {
   scales: {
-    xAxes: [
-      {
-        ticks: {
-          source: "labels"
-        }
-      }
-    ],
+    xAxes: [{ ticks: { source: "labels" } }],
     yAxes: [
       {
-        scaleLabel: {
-          display: true,
-          labelString: "Closing price ($)"
+        ticks: {
+          beginAtZero: true,
+          callback: (value, index, values) => {
+            if (parseInt(value) >= 1000) {
+              return (
+                "$" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              );
+            } else {
+              return "$" + value;
+            }
+          }
         }
       }
     ]
@@ -36,33 +38,26 @@ const DATA = {
     "Jan 2019",
     "Feb 2019"
   ],
-  income: [3000, 2000, 3000, 2000, 3000, 2000],
-  fixed: [300, 400, 300, 400, 300, 400],
-  expenses: [4000, 4000, 4000, 4000, 4000, 4000]
+  income: [4000, 4000, 4000, 4000, 4000, 4000],
+  expenses: [3000, 2000, 3000, 2000, 3000, 2000],
+  fixed: [300, 400, 300, 400, 300, 400]
 };
 
 const data = {
   labels: DATA.months,
   datasets: [
     {
-      label: "Fixed Expenses",
-      borderColor: "rgb(249,152,159)",
-      backgroundColor: "rgba(249,152,159,0.6)",
-      data: DATA.income,
-      type: "line"
-    },
-    {
       label: "Expenses",
-      borderColor: "rgb(249,152,159)",
-      backgroundColor: "rgba(249,152,159,0.6)",
-      data: DATA.fixed,
-      type: "line"
-    },
-    {
-      label: "Expenses",
-      borderColor: "rgb(126,211,178)",
-      backgroundColor: "rgba(126,211,178,0.6)",
+      borderColor: "rgb(98, 27, 31)",
+      backgroundColor: "rgb(178,54,61)",
       data: DATA.expenses,
+      type: "line"
+    },
+    {
+      label: "Income",
+      borderColor: "rgb(36,178,72)",
+      backgroundColor: "rgb(36,178,72)",
+      data: DATA.income,
       type: "line"
     }
   ]
