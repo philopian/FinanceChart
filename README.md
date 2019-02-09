@@ -1,2 +1,0 @@
-# FinanceChart
-Created with CodeSandbox
