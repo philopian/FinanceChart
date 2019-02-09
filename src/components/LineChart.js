@@ -48,14 +48,14 @@ const data = {
   datasets: [
     {
       label: "Expenses",
-      borderColor: "rgb(98, 27, 31)",
+      borderColor: "rgb(150, 48, 54)",
       backgroundColor: "rgb(178,54,61)",
       data: DATA.expenses,
       type: "line"
     },
     {
       label: "Income",
-      borderColor: "rgb(36,178,72)",
+      borderColor: "rgb(31, 135, 58)",
       backgroundColor: "rgb(36,178,72)",
       data: DATA.income,
       type: "line"
